@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/reactjs-tailwind-fe-task/static/css/main.bd6ee9dd.css",
-    "main.js": "/reactjs-tailwind-fe-task/static/js/main.60965ef2.js",
+    "main.css": "/reactjs-tailwind-fe-task/static/css/main.5614cba4.css",
+    "main.js": "/reactjs-tailwind-fe-task/static/js/main.9d652089.js",
     "static/media/watch.jpg": "/reactjs-tailwind-fe-task/static/media/watch.a93af8118878730e6475.jpg",
     "static/media/laptop.jpg": "/reactjs-tailwind-fe-task/static/media/laptop.ee4902cb8bd217a18aa6.jpg",
     "static/media/headphone.jpg": "/reactjs-tailwind-fe-task/static/media/headphone.b9981c022b2128f94b49.jpg",
@@ -9,11 +9,11 @@
     "static/media/mouse.jpg": "/reactjs-tailwind-fe-task/static/media/mouse.5dad4d9575906c4c5f1c.jpg",
     "static/media/keyboard.jpg": "/reactjs-tailwind-fe-task/static/media/keyboard.bc28ed6f12349e46e681.jpg",
     "index.html": "/reactjs-tailwind-fe-task/index.html",
-    "main.bd6ee9dd.css.map": "/reactjs-tailwind-fe-task/static/css/main.bd6ee9dd.css.map",
-    "main.60965ef2.js.map": "/reactjs-tailwind-fe-task/static/js/main.60965ef2.js.map"
+    "main.5614cba4.css.map": "/reactjs-tailwind-fe-task/static/css/main.5614cba4.css.map",
+    "main.9d652089.js.map": "/reactjs-tailwind-fe-task/static/js/main.9d652089.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd6ee9dd.css",
-    "static/js/main.60965ef2.js"
+    "static/css/main.5614cba4.css",
+    "static/js/main.9d652089.js"
   ]
 }
