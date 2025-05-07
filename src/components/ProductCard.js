@@ -1,8 +1,7 @@
-import "./ProductCard.css";
-
+//ProductCard component get product props from parent component
 function ProductCard({ product }) {
   return (
-    <div className="bg-slate-200 rounded-2xl shadow-md overflow-hidden text-center max-w-[400px] w-full h-full">
+    <div className="bg-slate-200 rounded-2xl shadow-md overflow-hidden text-center min-w-80 max-w-[400px] w-full h-full">
       <img
         src={product.image}
         alt="product img"
