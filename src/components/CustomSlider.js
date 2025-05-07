@@ -7,6 +7,14 @@ const CustomSlider = ({ products }) => {
   const sliderRef = useRef(null);
   const [isTransitioning, setIsTransitioning] = useState(false); // Flag to debounce actions
 
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    setOpenModal(true);
+  };
+
   // Clone slides for loop functionality
   const slides = [
     ...products.slice(-slidesPerView), // Clone last slidesPerView slides at the beginning
@@ -77,44 +85,78 @@ const CustomSlider = ({ products }) => {
   }, [currentIndex, slidesPerView]);
 
   return (
-    <div className="relative w-full max-w-[1260px] overflow-hidden mx-auto">
-      {/* Slider Track */}
-      <div
-        ref={sliderRef}
-        className="flex w-full"
-        onTransitionEnd={handleTransitionEnd} // Handle transition end to jump to the correct slide
-      >
-        {slides.map((product, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 flex px-2.5 justify-center"
-            style={{
-              flexBasis: `${100 / slidesPerView}%`, // Each slide takes a fraction of the container depending on slidesPerView
-            }}
+    <>
+      <div className="relative w-full max-w-[1260px] overflow-hidden mx-auto">
+        {/* Slider Track */}
+        <div
+          ref={sliderRef}
+          className="flex w-full"
+          onTransitionEnd={handleTransitionEnd} // Handle transition end to jump to the correct slide
+        >
+          {slides.map((product, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 flex px-2.5 justify-center"
+              style={{
+                flexBasis: `${100 / slidesPerView}%`, // Each slide takes a fraction of the container depending on slidesPerView
+              }}
+            >
+              <ProductCard
+                product={product}
+                onClick={() => handleProductClick(product)}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-4 mt-8 justify-center items-center ">
+          {/* Prev Button */}
+          <button
+            onClick={handlePrevSlide}
+            className="bg-gray-800 text-white px-4 py-2 rounded z-10"
           >
-            <ProductCard product={product} />
+            Prev
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={handleNextSlide}
+            className=" bg-gray-800 text-white px-4 py-2 rounded z-10"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      {/* Modal for product details */}
+      {openModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50">
+          <div className="bg-slate-200 relative w-[85%] max-w-[750px] flex flex-col items-center justify-center md:w-4/5">
+            <span
+              id="close"
+              onClick={() => setOpenModal(false)}
+              className="absolute md:-top-16 md:-right-12 select-none -top-8 -right-5 text-white text-4xl md:text-5xl cursor-pointer"
+            >
+              &times;
+            </span>
+            <img
+              src={selectedProduct.image}
+              alt="product img modal"
+              className="w-full h-auto select-none"
+            />
+            <div className="px-4 text-center text-base p-2 md:py-5 flex flex-col items-center justify-center gap-2 w-full">
+              <h2 className="md:text-2xl font-bold uppercase">
+                {selectedProduct?.name}
+              </h2>
+              <p className="md:text-xl">{selectedProduct?.description}</p>
+              <p className="md:text-xl font-semibold">
+                ${selectedProduct?.price}
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-
-      <div className="flex gap-4 mt-8 justify-center items-center ">
-        {/* Prev Button */}
-        <button
-          onClick={handlePrevSlide}
-          className="bg-gray-800 text-white px-4 py-2 rounded z-10"
-        >
-          Prev
-        </button>
-
-        {/* Next Button */}
-        <button
-          onClick={handleNextSlide}
-          className=" bg-gray-800 text-white px-4 py-2 rounded z-10"
-        >
-          Next
-        </button>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
